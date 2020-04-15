@@ -1,5 +1,5 @@
 import React from "react";
-
+import request from "../utils/request";
 class Login extends React.Component {
   state = {
     email: "",
@@ -12,6 +12,16 @@ class Login extends React.Component {
     console.log("Submit");
 
     console.log(this.state);
+
+    request("ApplicationUsers/login", {
+      method: "POST",
+      body: JSON.stringify({
+        email: this.state.email,
+        password: this.state.password,
+      }),
+    })
+      .then((res) => console.log(res))
+      .catch((err) => console.error(err));
   };
 
   render() {
