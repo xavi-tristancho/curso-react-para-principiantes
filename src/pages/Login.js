@@ -1,5 +1,46 @@
 import React, { useState } from "react";
 import request from "../utils/request";
+import styled from "styled-components";
+
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+`;
+
+const Box = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  padding: 50px;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+`;
+
+const Input = styled.input`
+  margin-bottom: 20px;
+  padding: 10px;
+`;
+
+const Label = styled.label`
+  color: #627d98;
+  font-size: 14px;
+  margin-bottom: 5px;
+`;
+
+const Button = styled.button`
+  padding: 10px;
+  cursor: pointer;
+  color: white;
+  background-color: #186faf;
+
+  &:hover {
+    background-color: #2680c2;
+  }
+`;
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
@@ -23,9 +64,13 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={onSubmit}>
-        <input
+    <Container>
+      <Box as="form" className="box" onSubmit={onSubmit}>
+        <span style={{ textAlign: "center", marginBottom: 50, fontSize: 20 }}>
+          Bienvenido/a de nuevo
+        </span>
+        <Label htmlFor="email">Email</Label>
+        <Input
           type="email"
           name="email"
           id="email"
@@ -33,8 +78,9 @@ const Login = () => {
             setCredentials({ ...credentials, email: e.target.value })
           }
           value={credentials.email}
-        ></input>
-        <input
+        ></Input>
+        <Label htmlFor="password">Contraseña</Label>
+        <Input
           type="password"
           name="password"
           id="password"
@@ -42,10 +88,11 @@ const Login = () => {
             setCredentials({ ...credentials, password: e.target.value })
           }
           value={credentials.password}
-        ></input>
-        <button type="submit">Iniciar Sesión</button>
-      </form>
-    </div>
+        ></Input>
+
+        <Button type="submit">Iniciar Sesión</Button>
+      </Box>
+    </Container>
   );
 };
 
