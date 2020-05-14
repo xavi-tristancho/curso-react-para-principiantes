@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import Login from "./pages/Login";
 import * as serviceWorker from "./serviceWorker";
+import "./languages/i18next";
 
 ReactDOM.render(
   <React.StrictMode>

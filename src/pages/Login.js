@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import request from "../utils/request";
 import styled from "styled-components";
+import { withTranslation } from "react-i18next";
 
 const Container = styled.div`
   display: flex;
@@ -42,7 +43,7 @@ const Button = styled.button`
   }
 `;
 
-const Login = () => {
+const Login = ({ t, i18n }) => {
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
@@ -63,11 +64,13 @@ const Login = () => {
       .catch((err) => console.error(err));
   };
 
+  const changeLanguage = (language) => i18n.changeLanguage(language);
+
   return (
     <Container>
       <Box as="form" className="box" onSubmit={onSubmit}>
         <span style={{ textAlign: "center", marginBottom: 50, fontSize: 20 }}>
-          Bienvenido/a de nuevo
+          {t("login.title")}
         </span>
         <Label htmlFor="email">Email</Label>
         <Input
@@ -91,9 +94,32 @@ const Login = () => {
         ></Input>
 
         <Button type="submit">Iniciar Sesión</Button>
+
+        <div
+          style={{ display: "flex", justifyContent: "center", marginTop: 20 }}
+        >
+          <Button
+            style={{
+              backgroundColor: "#DEDEDE",
+              color: "black",
+              marginRight: 10,
+            }}
+            onClick={() => changeLanguage("es")}
+            type="submit"
+          >
+            ES
+          </Button>
+          <Button
+            style={{ backgroundColor: "#DEDEDE", color: "black" }}
+            onClick={() => changeLanguage("en")}
+            type="submit"
+          >
+            EN
+          </Button>
+        </div>
       </Box>
     </Container>
   );
 };
 
-export default Login;
+export default withTranslation()(Login);
