@@ -43,7 +43,7 @@ const Button = styled.button`
   }
 `;
 
-const Login = ({ t, i18n }) => {
+const Login = ({ t, i18n, login }) => {
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
@@ -60,7 +60,7 @@ const Login = ({ t, i18n }) => {
       method: "POST",
       body: JSON.stringify(credentials),
     })
-      .then((res) => console.log(res))
+      .then((res) => login())
       .catch((err) => console.error(err));
   };
 
