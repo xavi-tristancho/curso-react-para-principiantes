@@ -1,1 +1,6 @@
-{ "translation": { "login": { "title": "Welcome again" } } }
+{
+  "translation": {
+    "login": { "title": "Welcome again" },
+    "register": { "title": "Sign up" }
+  }
+}
