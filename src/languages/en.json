@@ -1,5 +1,12 @@
 {
   "translation": {
+    "general": {
+      "signin": "Sign In",
+      "doNotHaveAccountYet": "Not Registered?",
+      "registerHere": "¡Create an account!",
+      "email": "Email",
+      "password": "Password"
+    },
     "login": { "title": "Welcome again" },
     "register": { "title": "Sign up" }
   }
