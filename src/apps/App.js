@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import UnAuthApp from "./UnAuthApp";
+import AuthApp from "./AuthApp";
 
 const initState = () => {
   try {
@@ -17,11 +18,7 @@ const App = () => {
     localStorage.setItem("isLoggedIn", true);
   };
 
-  return isLoggedIn ? (
-    <p>Has iniciado sesión</p>
-  ) : (
-    <UnAuthApp login={login}></UnAuthApp>
-  );
+  return isLoggedIn ? <AuthApp /> : <UnAuthApp login={login}></UnAuthApp>;
 };
 
 export default App;
