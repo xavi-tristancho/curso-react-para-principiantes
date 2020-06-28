@@ -5,13 +5,11 @@ import { UnAuthPage } from "../ui/";
 
 const Login = ({ t, login }) => {
   const onSubmit = (credentials) => {
-    
-
-    request("ApplicationUsers/login", {
+    request("ApplicationUsers/login?include=USER", {
       method: "POST",
       body: JSON.stringify(credentials),
     })
-      .then((res) => login())
+      .then(({ user }) => login(user))
       .catch((err) => console.error(err));
   };
 

@@ -8,13 +8,13 @@ import {
 import Customers from "../pages/Customers";
 import { AuthPage } from "../ui";
 
-const AuthApp = ({ login }) => {
+const AuthApp = ({ user }) => {
   return (
     <Router>
-      <AuthPage>
+      <AuthPage user={user}>
         <Switch>
           <Route path="/" exact>
-            <Customers login={login}></Customers>
+            <Customers></Customers>
           </Route>
 
           <Redirect to="/"></Redirect>

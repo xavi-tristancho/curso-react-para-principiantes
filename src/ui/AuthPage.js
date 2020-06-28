@@ -18,7 +18,21 @@ const MainContainer = styled.div`
   border-radius: 20px;
 `;
 
-const AuthPage = ({ children }) => {
+const ImageContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
+  padding-bottom: 60px;
+`;
+
+const ProfileImage = styled.img`
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 1.5px solid #19c3fc;
+`;
+
+const AuthPage = ({ user, children }) => {
   const items = [{ name: "Clientes", icon: Customer }];
 
   return (
@@ -36,6 +50,11 @@ const AuthPage = ({ children }) => {
             </Link>
           ))}
         </List>
+        {user.imageUrl && (
+          <ImageContainer>
+            <ProfileImage src={user.imageUrl} />
+          </ImageContainer>
+        )}
       </Sidebar>
       <MainContainer>{children}</MainContainer>
     </Container>
