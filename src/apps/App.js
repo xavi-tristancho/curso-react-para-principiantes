@@ -22,8 +22,16 @@ const App = () => {
     setIsLoggedIn(true);
   };
 
+  const logout = () => {
+    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("user");
+
+    setUser({});
+    setIsLoggedIn(false);
+  };
+
   return isLoggedIn ? (
-    <AuthApp user={user} />
+    <AuthApp user={user} logout={logout} />
   ) : (
     <UnAuthApp login={login}></UnAuthApp>
   );

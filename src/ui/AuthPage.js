@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { Link as RouterLink } from "react-router-dom";
-import { Sidebar, List, ListItem, Link } from "bluejay-ui";
+import { Sidebar, List, ListItem, Link, Button } from "bluejay-ui";
 import { ReactComponent as Customer } from "../images/customer.svg";
+import { ReactComponent as Logout } from "../images/logout.svg";
 
 const Container = styled.div`
   display: flex;
@@ -18,9 +19,11 @@ const MainContainer = styled.div`
   border-radius: 20px;
 `;
 
-const ImageContainer = styled.div`
+const ControlsContainer = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   margin-top: auto;
   padding-bottom: 60px;
 `;
@@ -32,7 +35,7 @@ const ProfileImage = styled.img`
   border: 1.5px solid #19c3fc;
 `;
 
-const AuthPage = ({ user, children }) => {
+const AuthPage = ({ user, logout, children }) => {
   const items = [{ name: "Clientes", icon: Customer }];
 
   return (
@@ -50,11 +53,16 @@ const AuthPage = ({ user, children }) => {
             </Link>
           ))}
         </List>
-        {user.imageUrl && (
-          <ImageContainer>
-            <ProfileImage src={user.imageUrl} />
-          </ImageContainer>
-        )}
+        <ControlsContainer>
+          {user.imageUrl && <ProfileImage src={user.imageUrl} />}
+          <Button
+            color="#FC6B19"
+            style={{ marginTop: 20 }}
+            rounded
+            icon={Logout}
+            onClick={logout}
+          ></Button>
+        </ControlsContainer>
       </Sidebar>
       <MainContainer>{children}</MainContainer>
     </Container>

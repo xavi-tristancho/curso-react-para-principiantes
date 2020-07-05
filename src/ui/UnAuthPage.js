@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import request from "../utils/request";
 import styled from "styled-components";
 import { withTranslation } from "react-i18next";
 import { Link as RouterLink } from "react-router-dom";
