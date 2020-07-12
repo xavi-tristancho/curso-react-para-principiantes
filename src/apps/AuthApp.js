@@ -5,7 +5,7 @@ import {
   Switch,
   Redirect,
 } from "react-router-dom";
-import Customers from "../pages/Customers";
+import { Customers, Profile } from "../pages";
 import { AuthPage } from "../ui";
 
 const AuthApp = ({ user, logout }) => {
@@ -15,6 +15,9 @@ const AuthApp = ({ user, logout }) => {
         <Switch>
           <Route path="/" exact>
             <Customers></Customers>
+          </Route>
+          <Route path="/profile" exact>
+            <Profile></Profile>
           </Route>
 
           <Redirect to="/"></Redirect>
