@@ -9,7 +9,7 @@ const Login = ({ t, login }) => {
       method: "POST",
       body: JSON.stringify(credentials),
     })
-      .then(({ user }) => login(user))
+      .then(({ id: token, user }) => login({ token, user }))
       .catch((err) => console.error(err));
   };
 

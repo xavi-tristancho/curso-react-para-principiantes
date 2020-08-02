@@ -3,6 +3,7 @@ const request = (url, options) =>
     ...options,
     headers: {
       "Content-Type": "application/json",
+      Authorization: localStorage.getItem("token"),
     },
   }).then((res) => {
     if (res.status === 200) {

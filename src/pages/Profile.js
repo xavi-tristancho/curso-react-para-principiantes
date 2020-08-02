@@ -15,7 +15,7 @@ const FormRow = styled.div`
   }
 `;
 
-const Profile = ({ user }) => {
+const Profile = ({ user, updateUser }) => {
   const [nextUser, setNextUser] = useState(user);
 
   const updateUserState = ({ target: { name, value } }) =>
@@ -27,7 +27,7 @@ const Profile = ({ user }) => {
     request(`ApplicationUsers/${user.id}`, {
       method: "PATCH",
       body: JSON.stringify(nextUser),
-    });
+    }).then(updateUser);
   };
 
   return (

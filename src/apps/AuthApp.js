@@ -8,7 +8,7 @@ import {
 import { Customers, Profile } from "../pages";
 import { AuthPage } from "../ui";
 
-const AuthApp = ({ user, logout }) => {
+const AuthApp = ({ user, logout, updateUser }) => {
   return (
     <Router>
       <AuthPage user={user} logout={logout}>
@@ -17,7 +17,7 @@ const AuthApp = ({ user, logout }) => {
             <Customers></Customers>
           </Route>
           <Route path="/profile" exact>
-            <Profile user={user}></Profile>
+            <Profile user={user} updateUser={updateUser}></Profile>
           </Route>
 
           <Redirect to="/"></Redirect>
